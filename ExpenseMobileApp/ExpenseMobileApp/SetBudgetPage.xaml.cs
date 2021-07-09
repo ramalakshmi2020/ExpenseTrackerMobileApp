@@ -44,17 +44,32 @@ namespace ExpenseMobileApp
                 double Budget = double.Parse(BudgetInputTextbox.Text);
                 ExpenseManager.SetMonthlyBudget(Budget, int.Parse(info[1]), int.Parse(info[0]));
 
+                //if this is the first time the page is loaded it need to display the expense page
                 // move to expense page
-                //await Navigation.PushModalAsync(new NavigationPage(new ExpenseDisplayPage { BindingContext = context }));
-                await Navigation.PopModalAsync();
+                if (info.Length == 3)
+                {
+                    await Navigation.PushModalAsync(new NavigationPage(new ExpenseDisplayPage { BindingContext = context }));
+                }
+                else
+                {
+                    await Navigation.PopModalAsync();
+                }
 
             }
         }
 
         private async void OnCancelButtonClicked(object sender, EventArgs e)
         {
+            string[] info = context.Split('.');
             //displays an error message if no budget amount is specified
-            await Navigation.PopModalAsync();
+            if (info.Length == 3)
+            {
+                await Navigation.PushModalAsync(new NavigationPage(new ExpenseDisplayPage { BindingContext = context }));
+            }
+            else
+            {
+                await Navigation.PopModalAsync();
+            }
         }
     }
 }

@@ -10,27 +10,7 @@ namespace ExpenseMobileApp
 {
     public static class ExpenseManager
     {
-        /*(public static List<Expense> Expenses = new List<Expense>();
-
-        public static int Budget { get; set; }
-
-        public static void AddExpense(Expense expense)
-        {
-            DateTime date = expense.Date.Date;
-            Expenses.Add(expense);
-        }
-
-        public static int Balance
-        {
-            get
-            {
-                //calculate balace based on expenses
-                int totalExp = 0;
-                Expenses.ForEach(exp => totalExp += exp.Amount);
-                return Budget - totalExp;
-            }
-        }*/
-
+        
         private static List<YearlyExpense> yearlyExpenseList = new List<YearlyExpense>();
         public static void InitializeData()
         {
@@ -40,7 +20,6 @@ namespace ExpenseMobileApp
             if (isfilethere)
             {
 
-                //File.Delete(filepath);
                 DeSerializeData();
             }
         }
@@ -204,9 +183,10 @@ namespace ExpenseMobileApp
         private static void DeSerializeData()
         {
             string filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "YearlyExpenses.xml");
-            XmlSerializer serializer = new XmlSerializer(typeof(List<YearlyExpense>));//initialises the serialiser
-                                                                                      //this should read stuff from the xml and update the static collection with the data
-                                                                                      //deserialize the data already stored
+            XmlSerializer serializer = new XmlSerializer(typeof(List<YearlyExpense>));
+            //initialises the serialiser
+            //this should read stuff from the xml and update the static collection with the data
+            //deserialize the data already stored
             Stream reader = new FileStream(filepath, FileMode.Open);//initialises the writer
 
             yearlyExpenseList = (List<YearlyExpense>)serializer.Deserialize(reader);//Writes to the file
@@ -218,7 +198,8 @@ namespace ExpenseMobileApp
             //serialize this data for the app to remember
             XmlSerializer serializer = new XmlSerializer(typeof(List<YearlyExpense>));//initialises the serialiser
             string filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "YearlyExpenses.xml");
-            Stream writer = new FileStream(filepath, FileMode.Create);//initialises the writer
+            Stream writer = new FileStream(filepath, FileMode.Create);
+            //initialises the writer
 
             serializer.Serialize(writer, yearlyExpenseList);//Writes to the file
             writer.Close();

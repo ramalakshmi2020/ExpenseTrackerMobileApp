@@ -20,7 +20,7 @@ namespace ExpenseMobileApp
 
         protected async override void OnAppearing()
         {
-            string yearMonth = $"{DateTime.Now.Month}.{DateTime.Now.Year}";
+            string yearMonth = $"{DateTime.Now.Month}.{DateTime.Now.Year}.First";
             //Decide what template to display based on condition
             if (ExpenseManager.IsMonthInitialised(DateTime.Now.Year, DateTime.Now.Month))
             {
@@ -29,7 +29,7 @@ namespace ExpenseMobileApp
             }
             else
             {
-                await Navigation.PushModalAsync(new SetBudgetPage { BindingContext = yearMonth });
+                await Navigation.PushModalAsync(new NavigationPage(new SetBudgetPage { BindingContext = yearMonth }));
             }
         }
         
