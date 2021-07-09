@@ -2,22 +2,27 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ExpenseMobileApp.SetBudgetPage">
+
+    <NavigationPage.TitleView>
+        <Label Text="Set Your Monthly Budget"
+               FontSize="30"
+               FontFamily="Verdana"
+               TextColor="Black"
+               FontAttributes="Bold"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+    </NavigationPage.TitleView>
+
     <ContentPage.Content>
         <StackLayout Margin="0,100,0,0">
             
             
-            <Label x:Name ="BudgetLabel" 
-                   Text="Set Your Monthly Budget" 
-               FontSize="25" 
-               FontAttributes="Bold"
-               FontFamily="Verdana"
-                   HorizontalOptions="Center"
-               Margin="0,20,0,0"/>
             <Label x:Name ="YearMonthLabel" 
-               FontSize="Title" 
+               FontSize="30" 
                FontAttributes="Bold"
                FontFamily="Verdana"
-               HorizontalTextAlignment="Center"/>
+               HorizontalTextAlignment="Center"
+                   Margin="0,0,0,50"/>
                
             
             <Entry  x:Name="BudgetInputTextbox"

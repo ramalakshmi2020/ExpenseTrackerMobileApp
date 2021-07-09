@@ -100,7 +100,7 @@ namespace ExpenseMobileApp
             var selectedmonth = MonthPicker.SelectedIndex + 1;//0 based index
             var selectedYear = (int)YearPicker.SelectedItem;
             string yearMonth = $"{selectedmonth}.{selectedYear}";
-            await Navigation.PushModalAsync(new SetBudgetPage { BindingContext = yearMonth });
+            await Navigation.PushModalAsync(new NavigationPage(new SetBudgetPage { BindingContext = yearMonth }));
         }
 
         private async void OnAddExpenseClicked(object sender, EventArgs e)

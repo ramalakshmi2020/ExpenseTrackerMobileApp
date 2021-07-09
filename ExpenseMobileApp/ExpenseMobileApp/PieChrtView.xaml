@@ -4,6 +4,23 @@
              x:Class="ExpenseMobileApp.PieChrtView" 
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms">
 
+    <NavigationPage.TitleView>
+        
+            <Label Text="This Month's Trends"
+               FontSize="30"
+               FontFamily="Verdana"
+               TextColor="Black"
+               FontAttributes="Bold"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+    </NavigationPage.TitleView>
+
+
+
+    <ContentPage.Content>
+        
+
     <StackLayout>
         <chart:SfChart VerticalOptions="FillAndExpand">
             <chart:SfChart.Legend>
@@ -44,5 +61,7 @@
 
 
     </StackLayout>
+
+    </ContentPage.Content>
 
 </ContentPage>
