@@ -45,7 +45,11 @@ namespace ExpenseMobileApp
             MonthPicker.SelectedIndexChanged += MonthPicker_SelectedIndexChanged;
             YearPicker.SelectedIndexChanged += YearPicker_SelectedIndexChanged;
 
-
+            var numberFormat = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
+            numberFormat.CurrencyNegativePattern = 1;
+            MonthBudget.Text = monthlyExpense.Budget.ToString("C", numberFormat);
+            balance = monthlyExpense.Balance;
+            BalanceDisplay.Text = balance.ToString("C", numberFormat);
             if (monthlyExpense.Budget <= 0)
             {
                 //budget not yet set - prompt the user to set the budget to able to track the expenses.
@@ -57,9 +61,7 @@ namespace ExpenseMobileApp
             else
             {
                 AddExpenseButton.IsVisible = true;
-                var numberFormat = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
-                numberFormat.CurrencyNegativePattern = 1;
-                MonthBudget.Text = monthlyExpense.Budget.ToString("C", numberFormat);
+                
 
                 //set another collection to this
                // List<Expense> expenses = new List<Expense>();
@@ -67,8 +69,7 @@ namespace ExpenseMobileApp
                 ExpenseListview.ItemsSource = monthlyExpense.ExpenseList.OrderByDescending(x => x.Date);
 
 
-                balance = monthlyExpense.Balance;
-                BalanceDisplay.Text = balance.ToString("C", numberFormat);
+                
                 EditDeleteStack.IsVisible = false;
                 //neee to change the label text
                 ViewExpensesInPie.IsVisible = true;

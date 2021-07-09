@@ -18,7 +18,10 @@ namespace ExpenseMobileApp.Model
             {
                 //calculate balace based on expenses
                 double totalExp = 0;
-                ExpenseList.ForEach(exp => totalExp += exp.Amount);
+                if (ExpenseList != null)
+                {
+                    ExpenseList.ForEach(exp => totalExp += exp.Amount);
+                }
                 return Budget - totalExp;
             }
         }
